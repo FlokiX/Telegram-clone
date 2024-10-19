@@ -1,0 +1,17 @@
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.Application.deps.json
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.Application.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.Application.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.Core.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.DataAccess.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.Core.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\bin\Debug\net8.0\TelegramClone.DataAccess.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.csproj.AssemblyReference.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.AssemblyInfoInputs.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.AssemblyInfo.cs
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.csproj.CoreCompileInputs.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\Telegram.F8296CF3.Up2Date
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\refint\TelegramClone.Application.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\ref\TelegramClone.Application.dll

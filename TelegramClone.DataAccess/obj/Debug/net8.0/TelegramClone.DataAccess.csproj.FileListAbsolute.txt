@@ -1,0 +1,17 @@
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.DataAccess.deps.json
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.DataAccess.runtimeconfig.json
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.DataAccess.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.DataAccess.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.Core.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\bin\Debug\net8.0\TelegramClone.Core.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.csproj.AssemblyReference.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.AssemblyInfoInputs.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.AssemblyInfo.cs
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\Telegram.18822BD9.Up2Date
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\refint\TelegramClone.DataAccess.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.pdb
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.genruntimeconfig.cache
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\ref\TelegramClone.DataAccess.dll

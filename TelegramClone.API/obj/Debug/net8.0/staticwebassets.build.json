@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "BZlIF4AFj7MIMyOxZVTCgkYITSXzmO/h5RYZu6qwacM=",
+  "Source": "TelegramClone.API",
+  "BasePath": "_content/TelegramClone.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
