@@ -22,45 +22,39 @@ namespace TelegramClone.API.Controllers
             _userService = userService;
         }
 
-        // GET: api/users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+
+
+
+        [HttpPost("register")]
+        public async Task<ActionResult<User>> Register([FromBody] UserRequest request)
         {
-            var users = await _userService.GetAllAsync();
-            return Ok(users);
+
+            var (user, error) = await _userService.RegisterAsync(request.Username, request.Email, request.Password);
+
+            if (error != null) return BadRequest(error);
+
+            // Возврат созданного пользователя
+            return CreatedAtAction(nameof(Register), new { id = user.Id }, user);
         }
 
-        // GET: api/users/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(Guid id)
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login([FromBody] LoginRequest request)
         {
-            var user = await _userService.GetByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return Ok(user);
-        }
+           
+            var (token, error) = await _userService.LoginAsync(request.Email, request.Password);
 
-
-        [HttpPost]
-        public async Task<ActionResult> CreateUser([FromBody] UserRequest request)
-        {
-
-            var (user, error) = TelegramClone.Core.Models.User.Create(Guid.NewGuid(), request.Username, request.Email, request.PasswordHash);
-
+            
             if (error != null)
             {
-                return BadRequest(error); 
+                return BadRequest(error);
             }
 
-            await _userService.AddAsync(user); 
-            return Ok(user); 
+            // Возвращаем JWT токен
+            return Ok(new { Token = token });
         }
 
 
-
-        // PUT: api/users/{id}
+        /*// PUT: api/users/{id}
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateUser(Guid id, [FromBody] UserRequest request)
         {
@@ -92,6 +86,29 @@ namespace TelegramClone.API.Controllers
         {
             await _userService.DeleteAsync(id);
             return NoContent();
-        }
+        }*/
+
+
+
+
+        /* // GET: api/users
+         [HttpGet]
+         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+         {
+             var users = await _userService.GetAllAsync();
+             return Ok(users);
+         }
+
+         // GET: api/users/{id}
+         [HttpGet("{id}")]
+         public async Task<ActionResult<User>> GetUser(Guid id)
+         {
+             var user = await _userService.GetByIdAsync(id);
+             if (user == null)
+             {
+                 return NotFound();
+             }
+             return Ok(user);
+         }*/
     }
 }

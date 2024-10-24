@@ -3,6 +3,6 @@
     public record UserRequest (
         string Username,
         string Email,
-        string PasswordHash);
+        string Password);
     
 }

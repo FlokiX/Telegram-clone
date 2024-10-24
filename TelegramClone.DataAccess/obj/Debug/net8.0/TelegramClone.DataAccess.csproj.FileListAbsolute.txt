@@ -15,3 +15,4 @@ C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-en
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.pdb
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.genruntimeconfig.cache
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\ref\TelegramClone.DataAccess.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.DataAccess\obj\Debug\net8.0\TelegramClone.DataAccess.sourcelink.json

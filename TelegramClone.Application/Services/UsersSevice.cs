@@ -1,17 +1,21 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TelegramClone.Core.Abstractions;
+using TelegramClone.Core.Abstractions.IRepository;
 using TelegramClone.Core.Models;
 
 namespace TelegramClone.Application.Services
 {
-    
+
     namespace TelegramClone.Services
     {
-       
+
         public class UserService : IUserService
         {
             private readonly IUserRepository _userRepository;
@@ -21,7 +25,7 @@ namespace TelegramClone.Application.Services
                 _userRepository = userRepository;
             }
 
-            public async Task<IEnumerable<User>> GetAllAsync()
+            /*public async Task<IEnumerable<User>> GetAllAsync()
             {
                 return await _userRepository.GetAllAsync();
             }
@@ -34,23 +38,75 @@ namespace TelegramClone.Application.Services
                     throw new Exception($"User with ID {id} not found.");
                 }
                 return user;
+            }*/
+
+            public async Task<(User user, string error)> RegisterAsync(string username, string email, string password)
+            {
+                var (newUser, error) = User.Create(Guid.NewGuid(), username, email, password);
+
+                // Проверка на наличие ошибки при создании пользователя
+                if (error != null)
+                {
+                    return (null, error);
+                }
+
+                await _userRepository.AddAsync(newUser);
+
+                return (newUser, null);
             }
 
-            public async Task AddAsync(User user)
+
+
+            public async Task<(string token, string error)> LoginAsync(string email, string password)
             {
-                await _userRepository.AddAsync(user);
+                // Получаем пользователя по электронной почте
+                var (user, error) = await _userRepository.GetByEmailAsync(email);
+                if (error != null)
+                {
+                    return (null, error);
+                }
+
+                if (!user.VerifyPassword(password))
+                {
+                    return (null, "Invalid email or password.");
+                }
+                var token = GenerateJwtToken(user);
+
+                return (token, null); 
             }
 
-            public async Task UpdateAsync(Guid Id, string username, string email, string password)
+
+            public string GenerateJwtToken(User user)
             {
-   
-                await _userRepository.UpdateAsync(Id, username,email,password);
+                var claims = new[]
+                {
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, user.Id.ToString())
+                };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("GES1cnscrvu5LoiDnnIPON+Lc4U8ODRpFGrzzUnFlIU="));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(
+                    issuer: null, 
+                    audience: null, 
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(30),
+                    signingCredentials: creds);
+
+                return new JwtSecurityTokenHandler().WriteToken(token);
             }
 
-            public async Task DeleteAsync(Guid id)
-            {
-                await _userRepository.DeleteAsync(id);
-            }
+            /* public async Task UpdateAsync(Guid Id, string username, string email, string password)
+             {
+
+                 await _userRepository.UpdateAsync(Id, username,email,password);
+             }
+
+             public async Task DeleteAsync(Guid id)
+             {
+                 await _userRepository.DeleteAsync(id);
+             }*/
         }
     }
 

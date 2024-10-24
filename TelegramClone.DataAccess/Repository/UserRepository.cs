@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TelegramClone.Core.Abstractions;
+using TelegramClone.Core.Abstractions.IRepository;
 using TelegramClone.Core.Models;
 using TelegramClone.DataAccess.Entites;
 
@@ -25,7 +25,7 @@ namespace TelegramClone.DataAccess.Repository
 
         }*/
 
-        public async Task<IEnumerable<User>> GetAllAsync()
+        /*public async Task<IEnumerable<User>> GetAllAsync()
         {
             var userEntities = await _context.Users
                 .AsNoTracking()
@@ -36,26 +36,56 @@ namespace TelegramClone.DataAccess.Repository
                 .ToList();
 
             return users;
-        }
+        }*/
 
         public async Task AddAsync(User user)
         {
-          
+           
+            var existingUser = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            if (existingUser != null)
+            {
+                throw new InvalidOperationException("User with this email already exists.");
+            }
+
+         
             var userEntity = new UserEntity
             {
-                Id = Guid.NewGuid(), //новый id
+                Id = user.Id,
                 Username = user.Username,
                 Email = user.Email,
-                PasswordHash = user.PasswordHash, 
-                DateOfRegistration = DateTime.UtcNow
+                PasswordHash = user.PasswordHash,
+                DateOfRegistration = user.DateOfRegistration,
+                IPAddress = user.IPAddress,
+                Port = user.Port,
+                IsOnline = user.IsOnline 
+
             };
 
-            // Добавление UserEntity в контекст
             await _context.Users.AddAsync(userEntity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Guid id, string username, string email, string passwordHash)
+
+
+
+        public async Task<(User user, string error)> GetByEmailAsync(string email)
+        {
+           
+            var userEntity = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
+
+            if (userEntity == null)
+            {
+                return (null, "User not found.");
+            }
+            var user = User.Create(userEntity.Id, userEntity.Username, userEntity.Email, userEntity.PasswordHash).user;
+
+            return (user, null); 
+        }
+
+
+        /*public async Task UpdateAsync(Guid id, string username, string email, string passwordHash)
         {
             await _context.Users
                 .Where(u => u.Id == id)
@@ -66,10 +96,10 @@ namespace TelegramClone.DataAccess.Repository
 
   
            await _context.SaveChangesAsync();
-        }
+        }*/
 
 
-        public async Task DeleteAsync(Guid id)
+        /*public async Task DeleteAsync(Guid id)
         {
         
             var userEntity = await _context.Users.FindAsync(id);
@@ -96,7 +126,7 @@ namespace TelegramClone.DataAccess.Repository
             }
             var user = User.Create(id, userEntity.Username, userEntity.Email, userEntity.PasswordHash).user;
             return user;
-        }
+        }*/
     }
 
 

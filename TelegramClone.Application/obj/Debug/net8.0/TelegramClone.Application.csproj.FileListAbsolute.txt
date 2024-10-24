@@ -15,3 +15,4 @@ C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-en
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\refint\TelegramClone.Application.dll
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.pdb
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\ref\TelegramClone.Application.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.Application\obj\Debug\net8.0\TelegramClone.Application.sourcelink.json

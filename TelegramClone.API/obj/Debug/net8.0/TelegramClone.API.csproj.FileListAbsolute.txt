@@ -152,3 +152,6 @@ C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-en
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\obj\Debug\net8.0\TelegramClone.API.pdb
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\obj\Debug\net8.0\TelegramClone.API.genruntimeconfig.cache
 C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\obj\Debug\net8.0\ref\TelegramClone.API.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\obj\Debug\net8.0\TelegramClone.API.sourcelink.json
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zikol\source\repos\EF\Telegram-clone\telegram-back-end\telegram-back-end\TelegramClone.API\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
