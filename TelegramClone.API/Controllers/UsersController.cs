@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using TelegramClone.API.Contracts;
-using TelegramClone.Application.Services.TelegramClone.Services;
 using TelegramClone.Core.Abstractions;
 using TelegramClone.Core.Models;
 

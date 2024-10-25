@@ -31,29 +31,33 @@ namespace TelegramClone.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserEntity>().HasIndex(u => u.Username).IsUnique(); 
-            modelBuilder.Entity<UserEntity>().HasIndex(u => u.Email).IsUnique(); 
-
             modelBuilder.Entity<UserEntity>()
-            .HasMany(u => u.Contacts) // Один пользователь может иметь много контактов
-            .WithOne(c => c.User) // Один контакт связан с одним пользователем
-            .HasForeignKey(c => c.UserId); // Внешний ключ на UserEntity
-            //.OnDelete(DeleteBehavior.Cascade); // Удаление пользователя удаляет все его контакты
+                .HasIndex(u => u.Username).IsUnique();
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(u => u.Email).IsUnique();
 
-            // Связь один-ко-многим между Chat и ChatMessage
+            // Связь один-ко-многим между UserEntity и ContactEntity
+            modelBuilder.Entity<UserEntity>()
+                .HasMany(u => u.Contacts) 
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.UserId) 
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Связь один-ко-многим между ChatEntity и ChatMessageEntity
             modelBuilder.Entity<ChatEntity>()
-                .HasMany(c => c.Messages)
+                .HasMany(c => c.Messages) 
                 .WithOne(m => m.Chat)
-                .HasForeignKey(m => m.ChatId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(m => m.ChatId) 
+                .OnDelete(DeleteBehavior.Cascade); 
 
-            // Связь один-к-одному между Contact и Chat
+            // Связь один-к-одному между ContactEntity и ChatEntity
             modelBuilder.Entity<ContactEntity>()
-                .HasOne(c => c.Chat)
-                .WithMany() // Один чат связан с одним контактом
-                .HasForeignKey(c => c.ChatId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(c => c.Chat) 
+                .WithOne()
+                .HasForeignKey<ContactEntity>(c => c.ChatId)
+                .OnDelete(DeleteBehavior.Cascade); 
         }
+
     }
 
 

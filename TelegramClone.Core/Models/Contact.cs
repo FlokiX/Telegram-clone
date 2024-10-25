@@ -9,12 +9,31 @@ namespace TelegramClone.Core.Models
 {
     public class Contact
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; } // Внешний ключ на User
-        public string ContactUsername { get; set; } // Имя пользователя контакта
-   
-        // Связь один-к-одному с чатом
-        public Guid ChatId { get; set; } // Внешний ключ на Chat
-        
+        public Guid Id { get; } = Guid.NewGuid();
+        public Guid UserId { get; } 
+        public string ContactUsername { get; }
+
+        public Guid ChatId { get; } 
+
+        // Конструктор для создания контакта
+        private Contact(Guid userId, string contactUsername, Guid chatId)
+        {
+            UserId = userId;
+            ContactUsername = contactUsername;
+            ChatId = chatId;
+        }
+
+        // Статический метод для создания контакта
+        public static (Contact contact, string error) Create(Guid userId, string contactUsername, Guid chatId)
+        {
+            if (string.IsNullOrWhiteSpace(contactUsername) || contactUsername.Length > 20)
+            {
+                return (null, "Contact username cannot be null or empty and must be less than or equal to 20 characters.");
+            }
+
+            var newContact = new Contact(userId, contactUsername, chatId);
+            return (newContact, null);
+        }
     }
+
 }

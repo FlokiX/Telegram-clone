@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TelegramClone.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1ebf7d811eb0558acb9cdc2a8450e555bf6fca4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35a3a3ec4b262f77cc4ff085066b8d8be3c09415")]
 [assembly: System.Reflection.AssemblyProductAttribute("TelegramClone.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TelegramClone.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

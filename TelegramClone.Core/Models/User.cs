@@ -12,7 +12,23 @@ public class User
     public int Port { get; private set; } = 0;
     public bool IsOnline { get; private set; } = false;
 
-    public List<Contact> Contacts { get; set; } = new(); // Контакты пользователя
+    public List<Contact> Contacts { get; set; } = new();
+
+    public void AddContact(Contact contact)
+    {
+        if (contact == null)
+        {
+            throw new ArgumentNullException(nameof(contact), "Контакт не может быть null.");
+        }
+
+  
+        if (Contacts.Any(c => c.ContactUsername == contact.ContactUsername))
+        {
+            throw new InvalidOperationException("Контакт с таким именем уже существует.");
+        }
+
+        Contacts.Add(contact); 
+    }
 
 
     private User(Guid Id, string username, string email, string password, DateTime dateOfRegistration, string ipAddress, int port, bool isOnline)

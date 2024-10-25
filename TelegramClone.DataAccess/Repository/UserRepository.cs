@@ -20,6 +20,33 @@ namespace TelegramClone.DataAccess.Repository
             _context = context;
         }
 
+        //СУКА ОТ КУДА БЕРЕТСЯ USERID В КОНТАКТЕ СДЕЛАТЬ ТАК ЧТОБЫ ОН ВСЕГДА БЫЛ ПРИ СОЗДАНИИ ЮЗЕРА
+        public async Task<Contact> GetContactByUserIdAsync(Guid userId)
+        {
+            // Находим первый контакт, связанный с данным пользователем
+            var contactEntity = await _context.Contacts
+                .FirstOrDefaultAsync(c => c.UserId == userId); // Возвращаем один контакт или null
+
+            // Проверка на null перед маппингом
+            if (contactEntity == null)
+                return null;
+
+            // Возвращаем маппинг ContactEntity в Contact
+            return MapToContact(contactEntity);
+        }
+
+        private Contact MapToContact(ContactEntity contactEntity)
+        {
+            // Создаем контакт с использованием метода Create
+            var (contact, error) = Contact.Create(contactEntity.UserId, contactEntity.ContactUsername, contactEntity.ChatId);
+            if (error != null)
+            {
+                // Здесь можно обработать ошибку, если это необходимо
+                throw new Exception(error);
+            }
+            return contact;
+        }
+
         /*public async Task<User> GetByIdAsync(Guid id)
         {
 
@@ -40,7 +67,7 @@ namespace TelegramClone.DataAccess.Repository
 
         public async Task AddAsync(User user)
         {
-           
+
             var existingUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == user.Email);
 
@@ -49,7 +76,7 @@ namespace TelegramClone.DataAccess.Repository
                 throw new InvalidOperationException("User with this email already exists.");
             }
 
-         
+
             var userEntity = new UserEntity
             {
                 Id = user.Id,
@@ -59,7 +86,7 @@ namespace TelegramClone.DataAccess.Repository
                 DateOfRegistration = user.DateOfRegistration,
                 IPAddress = user.IPAddress,
                 Port = user.Port,
-                IsOnline = user.IsOnline 
+                IsOnline = user.IsOnline
 
             };
 
@@ -72,7 +99,7 @@ namespace TelegramClone.DataAccess.Repository
 
         public async Task<(User user, string error)> GetByEmailAsync(string email)
         {
-           
+
             var userEntity = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
 
             if (userEntity == null)
@@ -81,8 +108,10 @@ namespace TelegramClone.DataAccess.Repository
             }
             var user = User.Create(userEntity.Id, userEntity.Username, userEntity.Email, userEntity.PasswordHash).user;
 
-            return (user, null); 
+            return (user, null);
         }
+
+
 
 
         /*public async Task UpdateAsync(Guid id, string username, string email, string passwordHash)
