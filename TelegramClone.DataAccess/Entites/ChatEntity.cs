@@ -9,8 +9,8 @@ namespace TelegramClone.DataAccess.Entites
     public class ChatEntity
     {
         public Guid Id { get; set; } // Уникальный идентификатор чата
-        public string Name { get; set; } // Имя чата
+        public Guid User1Id { get; set; } // ID первого пользователя
+        public Guid User2Id { get; set; } // ID второго пользователя
         public List<ChatMessageEntity> Messages { get; set; } = new(); // Сообщения в чате
-        public List<Guid> UserIds { get; set; } = new(); // Пользователи, входящие в чат
     }
 }

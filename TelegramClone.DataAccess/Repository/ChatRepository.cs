@@ -19,20 +19,48 @@ namespace TelegramClone.DataAccess.Repository
             _context = context;
         }
 
-       
-
-        // Создать новый чат
-        public async Task<Chat> CreateChatAsync(Chat chat)
+        // Создать новый чат или вернуть существующий
+        public async Task<Chat> CreateChatAsync(Guid user1Id, Guid user2Id)
         {
-            var chatEntity = MapToChatEntity(chat);
+            // Проверяем, существует ли уже чат между двумя пользователями
+            var existingChat = await _context.Chats
+                .FirstOrDefaultAsync(c => (c.User1Id == user1Id && c.User2Id == user2Id) ||
+                                           (c.User1Id == user2Id && c.User2Id == user1Id));
+
+            // Если чат уже существует, возвращаем его
+            if (existingChat != null)
+            {
+                return Chat.Create(existingChat.User1Id, existingChat.User2Id).chat; // Возвращаем существующий чат
+            }
+
+            // Если чата нет, создаем новый
+            var (newChat, error) = Chat.Create(user1Id, user2Id); // Используем метод создания чата
+            if (error != null)
+            {
+                throw new InvalidOperationException(error); // Обработка ошибки, если нужно
+            }
+            var chatEntity = MapToChatEntity(newChat);
 
             _context.Chats.Add(chatEntity);
             await _context.SaveChangesAsync();
 
-            return chat;
+            return newChat; // Возвращаем созданный чат
         }
 
-      
+        // Маппинг ChatEntity -> Chat
+        private Chat MapToChat(ChatEntity chatEntity)
+        {
+            return Chat.Create(chatEntity.Id, chatEntity.User1Id, chatEntity.User2Id,
+                chatEntity.Messages.Select(m => new ChatMessage
+                {
+                    Id = m.Id,
+                    ChatId = m.ChatId,
+                    SenderUsername = m.SenderUsername,
+                    Content = m.Content,
+                    Timestamp = m.Timestamp
+                }).ToList());
+        }
+
 
         // Маппинг Chat -> ChatEntity
         private ChatEntity MapToChatEntity(Chat chat)
@@ -40,8 +68,8 @@ namespace TelegramClone.DataAccess.Repository
             return new ChatEntity
             {
                 Id = chat.Id,
-                Name = chat.Name,
-                UserIds = (List<Guid>)chat.UserIds,
+                User1Id = chat.User1Id,
+                User2Id = chat.User2Id,
                 Messages = chat.Messages.Select(m => new ChatMessageEntity
                 {
                     Id = m.Id,
@@ -53,5 +81,6 @@ namespace TelegramClone.DataAccess.Repository
             };
         }
     }
+
 
 }

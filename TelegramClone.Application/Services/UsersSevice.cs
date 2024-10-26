@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TelegramClone.Core.Abstractions;
 using TelegramClone.Core.Abstractions.IRepository;
 using TelegramClone.Core.Models;
+using TelegramClone.DataAccess.Repository;
 
 namespace TelegramClone.Application.Services
 {
@@ -19,10 +20,11 @@ namespace TelegramClone.Application.Services
         public class UserService : IUserService
         {
             private readonly IUserRepository _userRepository;
-
-            public UserService(IUserRepository userRepository)
+            private readonly IContactRepository _contactRepository;
+            public UserService(IUserRepository userRepository, IContactRepository contactRepository)
             {
                 _userRepository = userRepository;
+                _contactRepository = contactRepository; 
             }
 
             /*public async Task<IEnumerable<User>> GetAllAsync()
@@ -52,7 +54,20 @@ namespace TelegramClone.Application.Services
 
                 await _userRepository.AddAsync(newUser);
 
+
+                var (newContact, contactError) = Contact.Create(newUser.Id, newUser.Username);
+
+              
+                if (contactError != null)
+                {
+                    return (null, contactError); // Возвращаем ошибку, если создание контакта не удалось
+                }
+
+                // Сохранение контакта в базе данных
+                await _contactRepository.CreateContactAsync(newContact);
+
                 return (newUser, null);
+
             }
 
 

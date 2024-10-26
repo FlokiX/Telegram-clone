@@ -23,25 +23,25 @@ namespace TelegramClone.DataAccess.Repository
         //СУКА ОТ КУДА БЕРЕТСЯ USERID В КОНТАКТЕ СДЕЛАТЬ ТАК ЧТОБЫ ОН ВСЕГДА БЫЛ ПРИ СОЗДАНИИ ЮЗЕРА
         public async Task<Contact> GetContactByUserIdAsync(Guid userId)
         {
-            // Находим первый контакт, связанный с данным пользователем
+          
             var contactEntity = await _context.Contacts
-                .FirstOrDefaultAsync(c => c.UserId == userId); // Возвращаем один контакт или null
+                .FirstOrDefaultAsync(c => c.UserId == userId); 
 
             // Проверка на null перед маппингом
             if (contactEntity == null)
                 return null;
 
-            // Возвращаем маппинг ContactEntity в Contact
+           
             return MapToContact(contactEntity);
         }
 
         private Contact MapToContact(ContactEntity contactEntity)
         {
-            // Создаем контакт с использованием метода Create
+            
             var (contact, error) = Contact.Create(contactEntity.UserId, contactEntity.ContactUsername, contactEntity.ChatId);
             if (error != null)
             {
-                // Здесь можно обработать ошибку, если это необходимо
+                
                 throw new Exception(error);
             }
             return contact;
